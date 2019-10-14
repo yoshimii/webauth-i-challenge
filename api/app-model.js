@@ -2,15 +2,27 @@ const db = require('../data/dbConfig.js');
 
  module.exports = {
      register, 
-    //  login,
-    //  getUsers
+     login,
+    findBy,
+     getUsers
  }
 
  function register(userInfo) {
     return db('users')
         .insert(userInfo, 'id')
-        // .then(ids => {
-        //     const [id] = ids;
-        //     return findById(id);//returns new user by id
-        //   });
  }
+
+ function login(userInfo) {
+     return db('users')
+        .insert(userInfo, 'id')
+ }
+ function getUsers() {
+    return db('users')
+        .select('id', 'username', 'password')
+}
+
+function findBy(filter) {
+    return db('users')
+        .where(filter)
+        .first()
+}
