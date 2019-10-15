@@ -43,3 +43,17 @@ router.get('/users', restricted, (req, res) => {
         res.status(200).json(users)
     })
 })
+
+router.get('/logout', (req, res) => {
+    if(req.session) {
+        req.session.destroy(err => {
+            if(err) {
+                res.json({ message: "could not log user out"})
+            } else {
+                res.status(200).json({ message: "logout was successful" })
+            }
+        })
+    } else {
+        res.status(200).json({ message: "App session ended successfully" })
+    }
+})
