@@ -38,7 +38,7 @@ router.post('/login', (req, res) => {
         });
 })
 
-router.get('/users', restricted, (req, res) => {
+router.get('/restricted/users', (req, res) => {
     App.getUsers().then(users => {
         res.status(200).json(users)
     })
