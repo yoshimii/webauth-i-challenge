@@ -17,6 +17,6 @@ module.exports = function restricted(req, res, next) {
             }
         })
         .catch(err => {
-            res.status(500).json(err);
+            res.status(500).json({ message: "please provide valid credentials" });
         });
 };
