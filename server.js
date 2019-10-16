@@ -3,6 +3,15 @@ const server = express();
 const appRouter = require('./api/app-router.js')
 const restricted = require('./auth/restricted-middleware.js');
 
+const cors = require('cors');
+const helmet = require('helmet')
+
+server.use(function(request, response, next) {
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 const session  = require('express-session')
 
 const sessionConfig = {
@@ -19,6 +28,9 @@ const sessionConfig = {
 
 server.use(express.json());
 server.use(session(sessionConfig));
+
+server.use(helmet())
+server.use(cors());
 
 server.use('/api', appRouter)
 server.use('/api/restricted', restricted)
