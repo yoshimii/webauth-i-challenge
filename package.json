@@ -26,6 +26,7 @@
     "express-session": "^1.17.0",
     "helmet": "^3.21.1",
     "knex": "^0.19.5",
+    "react-router-dom": "^5.1.2",
     "sqlite": "^3.0.3"
   },
   "devDependencies": {
